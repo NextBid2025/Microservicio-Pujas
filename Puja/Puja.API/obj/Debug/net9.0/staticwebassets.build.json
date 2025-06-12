@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "dJQIDL8L4Z0PXVp9kT3nX+NSqeRMTJiZlc1FNqDSLMg=",
+  "Source": "Puja.API",
+  "BasePath": "_content/Puja.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

@@ -1,0 +1,13 @@
+C:\Users\Usuario\RiderProjects\NextBid\Microservicio-Pujas\Puja\BluidingBlocks\bin\Debug\net9.0\BluidingBlocks.deps.json
+C:\Users\Usuario\RiderProjects\NextBid\Microservicio-Pujas\Puja\BluidingBlocks\bin\Debug\net9.0\BluidingBlocks.dll
+C:\Users\Usuario\RiderProjects\NextBid\Microservicio-Pujas\Puja\BluidingBlocks\bin\Debug\net9.0\BluidingBlocks.pdb
+C:\Users\Usuario\RiderProjects\NextBid\Microservicio-Pujas\Puja\BluidingBlocks\obj\Debug\net9.0\BluidingBlocks.csproj.AssemblyReference.cache
+C:\Users\Usuario\RiderProjects\NextBid\Microservicio-Pujas\Puja\BluidingBlocks\obj\Debug\net9.0\BluidingBlocks.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Usuario\RiderProjects\NextBid\Microservicio-Pujas\Puja\BluidingBlocks\obj\Debug\net9.0\BluidingBlocks.AssemblyInfoInputs.cache
+C:\Users\Usuario\RiderProjects\NextBid\Microservicio-Pujas\Puja\BluidingBlocks\obj\Debug\net9.0\BluidingBlocks.AssemblyInfo.cs
+C:\Users\Usuario\RiderProjects\NextBid\Microservicio-Pujas\Puja\BluidingBlocks\obj\Debug\net9.0\BluidingBlocks.csproj.CoreCompileInputs.cache
+C:\Users\Usuario\RiderProjects\NextBid\Microservicio-Pujas\Puja\BluidingBlocks\obj\Debug\net9.0\BluidingBlocks.sourcelink.json
+C:\Users\Usuario\RiderProjects\NextBid\Microservicio-Pujas\Puja\BluidingBlocks\obj\Debug\net9.0\BluidingBlocks.dll
+C:\Users\Usuario\RiderProjects\NextBid\Microservicio-Pujas\Puja\BluidingBlocks\obj\Debug\net9.0\refint\BluidingBlocks.dll
+C:\Users\Usuario\RiderProjects\NextBid\Microservicio-Pujas\Puja\BluidingBlocks\obj\Debug\net9.0\BluidingBlocks.pdb
+C:\Users\Usuario\RiderProjects\NextBid\Microservicio-Pujas\Puja\BluidingBlocks\obj\Debug\net9.0\ref\BluidingBlocks.dll

@@ -1,0 +1,7 @@
+﻿services:
+  puja.api:
+    image: puja.api
+    build:
+      context: .
+      dockerfile: Puja.API/Dockerfile
+

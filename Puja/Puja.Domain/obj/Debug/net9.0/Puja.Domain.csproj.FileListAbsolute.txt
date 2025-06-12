@@ -1,0 +1,13 @@
+C:\Users\Usuario\RiderProjects\NextBid\Microservicio-Pujas\Puja\Puja.Domain\bin\Debug\net9.0\Puja.Domain.deps.json
+C:\Users\Usuario\RiderProjects\NextBid\Microservicio-Pujas\Puja\Puja.Domain\bin\Debug\net9.0\Puja.Domain.dll
+C:\Users\Usuario\RiderProjects\NextBid\Microservicio-Pujas\Puja\Puja.Domain\bin\Debug\net9.0\Puja.Domain.pdb
+C:\Users\Usuario\RiderProjects\NextBid\Microservicio-Pujas\Puja\Puja.Domain\obj\Debug\net9.0\Puja.Domain.csproj.AssemblyReference.cache
+C:\Users\Usuario\RiderProjects\NextBid\Microservicio-Pujas\Puja\Puja.Domain\obj\Debug\net9.0\Puja.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Usuario\RiderProjects\NextBid\Microservicio-Pujas\Puja\Puja.Domain\obj\Debug\net9.0\Puja.Domain.AssemblyInfoInputs.cache
+C:\Users\Usuario\RiderProjects\NextBid\Microservicio-Pujas\Puja\Puja.Domain\obj\Debug\net9.0\Puja.Domain.AssemblyInfo.cs
+C:\Users\Usuario\RiderProjects\NextBid\Microservicio-Pujas\Puja\Puja.Domain\obj\Debug\net9.0\Puja.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Usuario\RiderProjects\NextBid\Microservicio-Pujas\Puja\Puja.Domain\obj\Debug\net9.0\Puja.Domain.sourcelink.json
+C:\Users\Usuario\RiderProjects\NextBid\Microservicio-Pujas\Puja\Puja.Domain\obj\Debug\net9.0\Puja.Domain.dll
+C:\Users\Usuario\RiderProjects\NextBid\Microservicio-Pujas\Puja\Puja.Domain\obj\Debug\net9.0\refint\Puja.Domain.dll
+C:\Users\Usuario\RiderProjects\NextBid\Microservicio-Pujas\Puja\Puja.Domain\obj\Debug\net9.0\Puja.Domain.pdb
+C:\Users\Usuario\RiderProjects\NextBid\Microservicio-Pujas\Puja\Puja.Domain\obj\Debug\net9.0\ref\Puja.Domain.dll
