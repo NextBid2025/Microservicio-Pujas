@@ -30,5 +30,8 @@ namespace Puja.API.Controllers
             var result = await _mediator.Send(new CreatePujaCommand(puja));
             return CreatedAtAction(nameof(CreatePuja), new { id = result.Id });
         }
+        [HttpGet("health")]
+        public IActionResult Health() => Ok("Healthy");
     }
+    
 }
