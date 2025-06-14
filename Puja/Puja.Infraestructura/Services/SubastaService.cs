@@ -22,4 +22,11 @@ public class SubastaService : ISubastaService
         dynamic estado = Newtonsoft.Json.JsonConvert.DeserializeObject(content);
         return estado.activa == true;
     }
+    public async Task ActualizarPrecioSubastaAsync(string subastaId, decimal nuevoPrecio)
+    {
+        var body = new { precioActual = nuevoPrecio };
+        var content = new StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(body), System.Text.Encoding.UTF8, "application/json");
+        var response = await _httpClient.PutAsync($"/api/subastas/{subastaId}/precio", content);
+        response.EnsureSuccessStatusCode();
+    }
 }

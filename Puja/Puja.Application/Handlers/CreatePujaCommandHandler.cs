@@ -63,7 +63,7 @@ namespace Puja.Application.Handlers
             );
 
             await _pujaRepository.AddAsync(puja);
-
+            await _subastaService.ActualizarPrecioSubastaAsync(request.Puja.SubastaId, request.Puja.Monto);
             var pujaCreatedEvent = new PujaCreatedEvent(
                 pujaId,
                 request.Puja.SubastaId,

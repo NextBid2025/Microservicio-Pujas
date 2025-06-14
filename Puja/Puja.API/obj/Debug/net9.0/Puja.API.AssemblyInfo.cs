@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Puja.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+53d80b60b5043fe52832ffe3a13150a0720a4c71")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4e9b377b5aa0dd1f008f49a57a172571d1718d20")]
 [assembly: System.Reflection.AssemblyProductAttribute("Puja.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Puja.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
