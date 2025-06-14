@@ -57,3 +57,4 @@ C:\Users\Usuario\RiderProjects\NextBid\Microservicio-Pujas\Puja\Puja.API\obj\Deb
 C:\Users\Usuario\RiderProjects\NextBid\Microservicio-Pujas\Puja\Puja.API\obj\Debug\net9.0\Puja.API.pdb
 C:\Users\Usuario\RiderProjects\NextBid\Microservicio-Pujas\Puja\Puja.API\obj\Debug\net9.0\Puja.API.genruntimeconfig.cache
 C:\Users\Usuario\RiderProjects\NextBid\Microservicio-Pujas\Puja\Puja.API\obj\Debug\net9.0\ref\Puja.API.dll
+C:\Users\Usuario\RiderProjects\NextBid\Microservicio-Pujas\Puja\Puja.API\bin\Debug\net9.0\Newtonsoft.Json.dll

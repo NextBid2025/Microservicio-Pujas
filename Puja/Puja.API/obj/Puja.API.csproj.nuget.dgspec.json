@@ -350,6 +350,9 @@
               "C:\\Users\\Usuario\\RiderProjects\\NextBid\\Microservicio-Pujas\\Puja\\BluidingBlocks\\BluidingBlocks.csproj": {
                 "projectPath": "C:\\Users\\Usuario\\RiderProjects\\NextBid\\Microservicio-Pujas\\Puja\\BluidingBlocks\\BluidingBlocks.csproj"
               },
+              "C:\\Users\\Usuario\\RiderProjects\\NextBid\\Microservicio-Pujas\\Puja\\Puja.Application\\Puja.Application.csproj": {
+                "projectPath": "C:\\Users\\Usuario\\RiderProjects\\NextBid\\Microservicio-Pujas\\Puja\\Puja.Application\\Puja.Application.csproj"
+              },
               "C:\\Users\\Usuario\\RiderProjects\\NextBid\\Microservicio-Pujas\\Puja\\Puja.Domain\\Puja.Domain.csproj": {
                 "projectPath": "C:\\Users\\Usuario\\RiderProjects\\NextBid\\Microservicio-Pujas\\Puja\\Puja.Domain\\Puja.Domain.csproj"
               }
@@ -383,6 +386,10 @@
             "MongoDB.Driver": {
               "target": "Package",
               "version": "[3.4.0, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
             }
           },
           "imports": [

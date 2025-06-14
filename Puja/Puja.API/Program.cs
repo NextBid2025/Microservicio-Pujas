@@ -6,14 +6,17 @@ using Puja.Domain.Repositories;
 
 using Puja.Domain.Events;
 using MassTransit;
+using Microsoft.AspNetCore.Diagnostics;
 using Productos.Infrastructure.Configurations;
 using Pruja.Infrastructure.Configurations;
 
 using Puja.Application.Handlers.EventHandlers;
+using Puja.Application.Interfaces;
 using Puja.Infraestructura.Consumer;
 using Puja.Infraestructura.Interfaces;
 using Puja.Infraestructura.Persistence.Repository.MongoRead;
 using Puja.Infraestructura.Persistence.Repository.MongoWrite;
+using Puja.Infraestructura.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,6 +31,11 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<MongoWriteDbConfig>();
 builder.Services.AddSingleton<MongoReadDbConfig>();
 
+
+builder.Services.AddHttpClient<ISubastaService, SubastaService>(client =>
+{
+    client.BaseAddress = new Uri(Environment.GetEnvironmentVariable("SUBASTA_SERVICE_URL"));
+});
 // Repositorios
 builder.Services.AddScoped<IPujaRepository, MongoWritePujaRepository>();
 builder.Services.AddScoped<IPujaReadRepository, MongoReadPujaRepository>();
@@ -77,8 +85,16 @@ builder.Services.AddMassTransit(busConfigurator =>
      app.UseSwaggerUI();
  }
 
- app.UseHttpsRedirection();
-
+ 
+ app.UseExceptionHandler(errorApp =>
+ {
+     errorApp.Run(async context =>
+     {
+         var exceptionHandlerPathFeature = context.Features.Get<IExceptionHandlerPathFeature>();
+         context.Response.StatusCode = 400;
+         await context.Response.WriteAsync(exceptionHandlerPathFeature?.Error.Message ?? "Error");
+     });
+ });
  app.UseAuthorization();
 
  app.MapControllers();

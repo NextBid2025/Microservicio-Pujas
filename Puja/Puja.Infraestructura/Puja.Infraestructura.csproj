@@ -10,10 +10,12 @@
       <PackageReference Include="MassTransit.RabbitMQ" Version="8.4.0" />
       <PackageReference Include="MongoDB.Bson" Version="3.4.0" />
       <PackageReference Include="MongoDB.Driver" Version="3.4.0" />
+      <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\BluidingBlocks\BluidingBlocks.csproj" />
+      <ProjectReference Include="..\Puja.Application\Puja.Application.csproj" />
       <ProjectReference Include="..\Puja.Domain\Puja.Domain.csproj" />
     </ItemGroup>
 

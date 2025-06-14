@@ -9,6 +9,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Puja.Domain.Aggregates;
+using Puja.Application.Interfaces;
 
 namespace Puja.Application.Handlers
 {
@@ -16,30 +17,43 @@ namespace Puja.Application.Handlers
     {
         private readonly IPujaRepository _pujaRepository;
         private readonly IMediator _mediator;
+        private readonly ISubastaService _subastaService;
 
         public CreatePujaCommandHandler(
             IPujaRepository pujaRepository,
-            IMediator mediator)
+            IMediator mediator,
+            ISubastaService subastaService)
         {
             _pujaRepository = pujaRepository ?? throw new ArgumentNullException(nameof(pujaRepository));
             _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
+            _subastaService = subastaService ?? throw new ArgumentNullException(nameof(subastaService));
         }
 
         public async Task<CreatePujaResult> Handle(CreatePujaCommand request, CancellationToken cancellationToken)
         {
-            
-            var ultimaPuja = await _pujaRepository.GetUltimaPujaPorSubastaIdAsync(request.Puja.SubastaId);
+            bool subastaActiva;
+            try
+            {
+                subastaActiva = await _subastaService.SubastaEstaActivaAsync(request.Puja.SubastaId);
+            }
+            catch (Exception ex)
+            {
+                // Si no se puede validar, no permitir la puja
+                throw new InvalidOperationException("No se pudo validar el estado de la subasta.", ex);
+            }
 
-          
+            if (!subastaActiva)
+                throw new InvalidOperationException("La subasta no está activa.");
+
+            var ultimaPuja = await _pujaRepository.GetUltimaPujaPorSubastaIdAsync(request.Puja.SubastaId);
             var incrementoMinimo = await _pujaRepository.GetIncrementoMinimoPorSubastaIdAsync(request.Puja.SubastaId);
 
-            decimal montoBase = ultimaPuja?.Monto.Value ?? await _pujaRepository.GetPrecioInicialPorSubastaIdAsync(request.Puja.SubastaId);
+            decimal montoBase = ultimaPuja?.Monto.Value ??
+                                await _pujaRepository.GetPrecioInicialPorSubastaIdAsync(request.Puja.SubastaId);
 
-            
             if (request.Puja.Monto < montoBase + incrementoMinimo)
                 throw new InvalidOperationException("El monto de la puja no respeta el incremento mínimo permitido.");
 
-            // 4. Registrar la puja
             var pujaId = Guid.NewGuid().ToString();
             var puja = new AggregatePuja(
                 new PujaId(pujaId),

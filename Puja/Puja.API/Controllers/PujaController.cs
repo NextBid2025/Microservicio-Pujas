@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Puja.API.Controllers
 {
     [ApiController]
-    [Route("api/pujas")]
+    [Route("api/puja")]
     public class PujaController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -30,7 +30,7 @@ namespace Puja.API.Controllers
             var result = await _mediator.Send(new CreatePujaCommand(puja));
             return CreatedAtAction(nameof(CreatePuja), new { id = result.Id });
         }
-        [HttpGet("health")]
+        [HttpGet("/Puja/health")]
         public IActionResult Health() => Ok("Healthy");
     }
     

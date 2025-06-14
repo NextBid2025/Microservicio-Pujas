@@ -16,3 +16,5 @@ C:\Users\Usuario\RiderProjects\NextBid\Microservicio-Pujas\Puja\Puja.Infraestruc
 C:\Users\Usuario\RiderProjects\NextBid\Microservicio-Pujas\Puja\Puja.Infraestructura\obj\Debug\net9.0\refint\Puja.Infraestructura.dll
 C:\Users\Usuario\RiderProjects\NextBid\Microservicio-Pujas\Puja\Puja.Infraestructura\obj\Debug\net9.0\Puja.Infraestructura.pdb
 C:\Users\Usuario\RiderProjects\NextBid\Microservicio-Pujas\Puja\Puja.Infraestructura\obj\Debug\net9.0\ref\Puja.Infraestructura.dll
+C:\Users\Usuario\RiderProjects\NextBid\Microservicio-Pujas\Puja\Puja.Infraestructura\bin\Debug\net9.0\Puja.Application.dll
+C:\Users\Usuario\RiderProjects\NextBid\Microservicio-Pujas\Puja\Puja.Infraestructura\bin\Debug\net9.0\Puja.Application.pdb
