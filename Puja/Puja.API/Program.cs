@@ -94,18 +94,16 @@ builder.Services.AddMassTransit(busConfigurator =>
 
 EndpointConvention.Map<PujaCreatedEvent>(new Uri("queue:" + builder.Configuration["RABBIT_QUEUE"]));
 
-// CORS para React
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowReactApp",
-        policy => policy
-            .WithOrigins("http://localhost:3000")
-            .AllowAnyHeader()
-            .AllowAnyMethod()
-            .AllowCredentials());
-});
-
 var app = builder.Build();
+
+// Configuración de CORS para React
+app.UseCors(builder =>
+    builder
+        .WithOrigins("http://localhost:3000")
+        .AllowAnyHeader()
+        .AllowAnyMethod()
+        .AllowCredentials()
+);
 
 // Redirección a Swagger
 app.MapGet("/", context =>
@@ -132,9 +130,7 @@ app.UseExceptionHandler(errorApp =>
 });
 
 app.UseRouting();
-app.UseCors("AllowReactApp");
 app.UseAuthorization();
 app.MapControllers();
 app.MapHub<SubastaHub>("/subastaHub");
-
 app.Run();

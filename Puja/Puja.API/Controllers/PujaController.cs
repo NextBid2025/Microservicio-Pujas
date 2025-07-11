@@ -65,19 +65,13 @@ namespace Puja.API.Controllers
         [HttpPost("create")]
         public async Task<IActionResult> CreatePuja([FromBody] CreatePujaDto pujaDto)
         {
-            // Validar si el usuario existe
             var usuarioExiste = await _usuarioService.UsuarioExisteAsync(pujaDto.UserId);
             if (!usuarioExiste)
-            {
                 return BadRequest("El usuario especificado no existe.");
-            }
 
-            // Validar si la subasta está activa
             var subastaActiva = await _subastaService.SubastaEstaActivaAsync(pujaDto.SubastaId);
             if (!subastaActiva)
-            {
                 return BadRequest("La subasta no está activa o no existe.");
-            }
 
             var puja = new PujaDto(
                 Guid.NewGuid().ToString(),
@@ -87,12 +81,17 @@ namespace Puja.API.Controllers
                 DateTime.UtcNow
             );
 
-            var result = await _mediator.Send(new CreatePujaCommand(puja));
-            
-            // Notificar a través del servicio de notificación
-            await _notificacionPujaService.NotificarNuevaPujaAsync(puja.SubastaId, puja);
-
-            return CreatedAtAction(nameof(CreatePuja), new { id = result.Id }, result);
+            try
+            {
+                var result = await _mediator.Send(new CreatePujaCommand(puja));
+                await _notificacionPujaService.NotificarNuevaPujaAsync(puja.SubastaId, puja);
+                return CreatedAtAction(nameof(CreatePuja), new { id = result.Id }, result);
+            }
+            catch (InvalidOperationException ex)
+            {
+                await _notificacionPujaService.NotificarPujaInvalidaAsync(puja.SubastaId, ex.Message);
+                return BadRequest(new { mensaje = ex.Message });
+            }
         }
 
         [HttpGet("/Puja/health")]

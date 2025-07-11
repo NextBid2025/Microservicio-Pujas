@@ -28,4 +28,14 @@ public class NotificacionPujaService : INotificacionPujaService
     {
         await _hubContext.Clients.User(userId).SendAsync("PujaAutomatica", new { SubastaId = subastaId, Monto = monto });
     }
+    
+    public async Task NotificarPujaInvalidaAsync(string subastaId, string mensaje)
+    {
+        await _hubContext.Clients.Group(subastaId).SendAsync("PujaInvalida", new { mensaje });
+    }
+
+    public async Task NotificarNotificacionAutoPujaAsync(string subastaId, string mensaje)
+    {
+        await _hubContext.Clients.Group(subastaId).SendAsync("NotificacionAutoPuja", new { mensaje });
+    }
 }

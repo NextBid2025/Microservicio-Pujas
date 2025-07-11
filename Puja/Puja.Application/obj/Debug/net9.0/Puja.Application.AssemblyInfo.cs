@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Puja.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+328baf6b3ec948d66187a7734874c1dcaa734e0d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+28da90d3f3c34d8579be7df8fa03bb77410f4b01")]
 [assembly: System.Reflection.AssemblyProductAttribute("Puja.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Puja.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
