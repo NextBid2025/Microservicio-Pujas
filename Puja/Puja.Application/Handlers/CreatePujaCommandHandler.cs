@@ -13,20 +13,30 @@ using Puja.Application.Interfaces;
 
 namespace Puja.Application.Handlers
 {
-    public class CreatePujaCommandHandler : ICommandHandler<CreatePujaCommand, CreatePujaResult>
+    public class CreatePujaCommandHandler : IRequestHandler<CreatePujaCommand, CreatePujaResult>
     {
         private readonly IPujaRepository _pujaRepository;
         private readonly IMediator _mediator;
         private readonly ISubastaService _subastaService;
+        private readonly INotificacionPujaService _notificacionPujaService;
+        private readonly IPujaAutomaticaRepository _pujaAutomaticaRepository;
+        private readonly IPujaService _pujaService;
 
         public CreatePujaCommandHandler(
             IPujaRepository pujaRepository,
             IMediator mediator,
-            ISubastaService subastaService)
+            ISubastaService subastaService,
+            INotificacionPujaService notificacionPujaService,
+            IPujaAutomaticaRepository pujaAutomaticaRepository,
+            IPujaService pujaService
+        )
         {
             _pujaRepository = pujaRepository ?? throw new ArgumentNullException(nameof(pujaRepository));
             _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
             _subastaService = subastaService ?? throw new ArgumentNullException(nameof(subastaService));
+            _notificacionPujaService = notificacionPujaService ?? throw new ArgumentNullException(nameof(notificacionPujaService));
+            _pujaAutomaticaRepository = pujaAutomaticaRepository ?? throw new ArgumentNullException(nameof(pujaAutomaticaRepository));
+            _pujaService = pujaService ?? throw new ArgumentNullException(nameof(pujaService));
         }
 
         public async Task<CreatePujaResult> Handle(CreatePujaCommand request, CancellationToken cancellationToken)
@@ -38,7 +48,6 @@ namespace Puja.Application.Handlers
             }
             catch (Exception ex)
             {
-                // Si no se puede validar, no permitir la puja
                 throw new InvalidOperationException("No se pudo validar el estado de la subasta.", ex);
             }
 
@@ -63,7 +72,16 @@ namespace Puja.Application.Handlers
             );
 
             await _pujaRepository.AddAsync(puja);
+
             await _subastaService.ActualizarPrecioSubastaAsync(request.Puja.SubastaId, request.Puja.Monto);
+
+            await _notificacionPujaService.NotificarNuevaPujaAsync(request.Puja.SubastaId, new {
+                PujaId = puja.Id,
+                UserId = request.Puja.UserId,
+                Monto = request.Puja.Monto,
+                FechaPuja = request.Puja.FechaPuja
+            });
+
             var pujaCreatedEvent = new PujaCreatedEvent(
                 pujaId,
                 request.Puja.SubastaId,
@@ -73,6 +91,25 @@ namespace Puja.Application.Handlers
             );
 
             await _mediator.Publish(pujaCreatedEvent, cancellationToken);
+
+            // --- Lógica de puja automática ---
+            var configs = await _pujaAutomaticaRepository.GetBySubastaIdAsync(request.Puja.SubastaId);
+
+            foreach (var config in configs)
+            {
+                // Asegúrate que config tiene las propiedades UserId y MontoMaximo
+                if (config.UserId != request.Puja.UserId && request.Puja.Monto < config.MontoMaximo)
+                {
+                    var nuevoMonto = Math.Min(config.MontoMaximo, request.Puja.Monto + incrementoMinimo);
+                    await _pujaService.CrearPujaAutomaticaAsync(config.UserId, request.Puja.SubastaId, nuevoMonto);
+                    await _notificacionPujaService.NotificarPujaAutomaticaAsync(config.UserId, request.Puja.SubastaId, nuevoMonto);
+                }
+                else if (request.Puja.Monto >= config.MontoMaximo)
+                {
+                    await _notificacionPujaService.NotificarLimiteAlcanzadoAsync(config.UserId, request.Puja.SubastaId);
+                }
+            }
+            // --- Fin lógica de puja automática ---
 
             return new CreatePujaResult(Guid.Parse(pujaId));
         }

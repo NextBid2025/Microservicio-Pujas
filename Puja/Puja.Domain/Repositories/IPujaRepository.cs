@@ -13,4 +13,5 @@ public interface IPujaRepository
     Task<decimal> GetIncrementoMinimoPorSubastaIdAsync(string subastaId);
     Task<decimal> GetPrecioInicialPorSubastaIdAsync(string subastaId);
     Task<AggregatePuja?> GetByIdAsync(string pujaId, CancellationToken cancellationToken);
+     
 }

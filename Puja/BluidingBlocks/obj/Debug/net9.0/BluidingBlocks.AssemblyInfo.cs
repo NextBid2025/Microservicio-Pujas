@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BluidingBlocks")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+53d80b60b5043fe52832ffe3a13150a0720a4c71")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+328baf6b3ec948d66187a7734874c1dcaa734e0d")]
 [assembly: System.Reflection.AssemblyProductAttribute("BluidingBlocks")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BluidingBlocks")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
