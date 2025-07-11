@@ -62,6 +62,19 @@ namespace Puja.API.Controllers
             }
         }
 
+        /// <summary>
+        /// Crea una nueva puja en una subasta activa.
+        /// Valida que el usuario exista y que la subasta esté activa antes de crear la puja.
+        /// Si la puja es válida, la notifica a todos los clientes conectados a la subasta.
+        /// Si la puja es inválida (por ejemplo, monto insuficiente o reglas de negocio), notifica el error a los clientes y retorna un mensaje descriptivo.
+        /// </summary>
+        /// <param name="pujaDto">
+        /// Objeto con los datos de la puja a crear: identificador de subasta, identificador de usuario y monto.
+        /// </param>
+        /// <returns>
+        /// Un resultado HTTP 201 con la puja creada si es exitosa.
+        /// Un resultado HTTP 400 con el motivo del error si el usuario no existe, la subasta no está activa o la puja es inválida.
+        /// </returns>
         [HttpPost("create")]
         public async Task<IActionResult> CreatePuja([FromBody] CreatePujaDto pujaDto)
         {
@@ -97,6 +110,14 @@ namespace Puja.API.Controllers
         [HttpGet("/Puja/health")]
         public IActionResult Health() => Ok("Healthy");
 
+        /// <summary>
+        /// Obtiene la puja ganadora (última puja realizada) de una subasta específica.
+        /// </summary>
+        /// <param name="subastaId">Identificador único de la subasta.</param>
+        /// <returns>
+        /// Un resultado HTTP 200 con la puja ganadora si existe.
+        /// Un resultado HTTP 404 si no hay pujas para la subasta indicada.
+        /// </returns>
         [HttpGet("ganadora/{subastaId}")]
         public async Task<IActionResult> GetPujaGanadora(string subastaId)
         {
@@ -107,6 +128,17 @@ namespace Puja.API.Controllers
             return Ok(puja);
         }
 
+        /// <summary>
+        /// Crea una puja automática para una subasta activa.
+        /// Valida que la subasta esté activa antes de procesar la puja automática.
+        /// </summary>
+        /// <param name="dto">
+        /// Objeto con los datos necesarios para la puja automática: identificador de usuario, identificador de subasta y monto.
+        /// </param>
+        /// <returns>
+        /// Un resultado HTTP 200 con un mensaje de éxito si la puja automática se realiza correctamente.
+        /// Un resultado HTTP 400 si la subasta no está activa o no existe.
+        /// </returns>
         [HttpPost("puja-automatica")]
         public async Task<IActionResult> CrearPujaAutomatica([FromBody] PujaAutomaticaDto dto)
         {
